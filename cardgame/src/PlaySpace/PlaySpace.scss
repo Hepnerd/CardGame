@@ -1,0 +1,42 @@
+@mixin fan($count, $angle) {
+  $offset: $angle / 2;
+  @for $i from 1 through $count {
+    $increment: $angle / ($count + 1);
+    div:nth-child(#{$i}) {
+      transform: translate(-50%, -50%) rotate(-$offset + $increment * $i);
+    }
+  }
+}
+
+@mixin pile($count, $visible) {
+  @for $i from 0 through $visible {
+    $height: $count + 150px * .75;
+    div:nth-child(#{$i}) {
+      transform: translateY(-$height);
+    }
+  }
+}
+
+.hand {
+    position: absolute;
+    left:50%;
+    top:80%;
+
+    @include fan(6, 50deg);
+  
+    &:hover {
+      @include fan(6, 120deg);
+    }
+}
+
+.pile {
+  position: absolute;
+  left:85%;
+  top:75%;
+
+  @include pile(6, 0);
+
+  &:hover {
+    @include pile(6, 3);
+  }
+}

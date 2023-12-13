@@ -1,0 +1,16 @@
+.gameCard {
+    width: 100px;
+    height:200px;
+    background:linear-gradient(#e66465, #9198e5);
+    border: 5px black;
+    border-radius: 5px;
+    position: absolute;
+    box-shadow: 0 0 30px transparentize(black, 0.8);
+    left: 50%;
+    top: 80%;
+
+    transform-origin: center 120%;
+    transition: transform 1s ease-out;
+
+    transform: rotateX(19deg);
+  }
