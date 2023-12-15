@@ -1,7 +1,9 @@
 import './Cards.scss'
 
-export default function Cards({id}) {
+export default function Cards({cssClass}) {
     return (
-            <div className="gameCard" data-index={id.id}></div>
+        <>
+            <div className={cssClass}></div>
+        </>
     )
 }

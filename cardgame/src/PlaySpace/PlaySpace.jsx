@@ -1,24 +1,33 @@
 import './PlaySpace.scss'
 import Cards from './Cards/Cards'
+import { useRef, useEffect, useState } from "react";
 
 export default function PlaySpace() {
+    const [isActive, setActive] = useState(true);
+
+    const toggleClass = () => {
+        setActive(!isActive);
+      };
+
     return (
         <>
-            <div className="hand">
-                <Cards id={1}/>
-                <Cards id={2}/>
-                <Cards id={3}/>
-                <Cards id={4}/>
-                <Cards id={5}/>
-                <Cards id={6}/>
-            </div>
-            <div className="pile">
-                <Cards id={1}/>
-                <Cards id={1}/>
-                <Cards id={1}/>
-                <Cards id={1}/>
-                <Cards id={1}/>
-                <Cards id={1}/>
+            <div className="playerBoard">
+                <div className={isActive ? 'handClosed': 'handFanned'} onClick={toggleClass}>
+                    <Cards cssClass={"gameCard"}/>
+                    <Cards cssClass={"gameCard"}/>
+                    <Cards cssClass={"gameCard"}/>
+                    <Cards cssClass={"gameCard"}/>
+                    <Cards cssClass={"gameCard"}/>
+                    <Cards cssClass={"gameCard"}/>
+                </div>
+                <div className="pile">
+                    <Cards cssClass={"gameCardPile"}/>
+                    <Cards cssClass={"gameCardPile"}/>
+                    <Cards cssClass={"gameCardPile"}/>
+                    <Cards cssClass={"gameCardPile"}/>
+                    <Cards cssClass={"gameCardPile"}/>
+                    <Cards cssClass={"gameCardPile"}/>
+                </div>
             </div>
         </>
     )
