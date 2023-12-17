@@ -10,9 +10,11 @@ body {
   $offset: $angle / 2;
   @for $i from 1 through $count {
     $increment: $angle / ($count + 1);
-    div:nth-child(#{$i}) {
-      transform: translate(-50%, -50%) rotate(-$offset + $increment * $i);
-    }
+    @if $count % 2 == 0 {
+      div.gameCardCard:nth-child(#{$i}) {
+        transform: translate(-50%, -50%) rotate(-$offset + $increment * $i);
+     }
+  }
   }
 }
 
@@ -31,35 +33,49 @@ body {
     }
 }
 
+.handClosed .gameCardBack {
+  display:none;
+}
+
+.handFanned .gameCardCard, .handFanned .gameCardCard {
+  top: 80%;
+}
+
 .handFanned {
   display: flex;
   position: absolute;
-  left: -20%;
+  left: 10%;
   top: 70%;
   transition: transform 1s ease-out;
 }
 
-.handFanned .gameCard {
+.handFanned .gameCardCard, .handFanned .gameCardCard {
   position: relative;
-  margin: 20px;
 }
 
 .pile {
   position: absolute;
   left:85%;
-  top:74%;
+  top:70%;
   transition: transform 0.5s ease-in;
 }
 
-.pile:hover > .gameCardPile:first-child {
+.pile .gameCardPileBack {
+  display: none;
+}
+
+.pile:hover > .gameCardPileCard:first-child {
   transform: translateY(-30px);
   transition: transform 1s ease-out;
 }
 
-.pile > .gameCardPile:first-child {
+.pile > .gameCardPileCard:first-child {
   transition: transform 0.5s ease-in;
 }
 
 .playerBoard {
   //TODO: Make the card decks align with this
+  display: flex;
+  min-height:100vh;
+  min-width:100vh;
 }
